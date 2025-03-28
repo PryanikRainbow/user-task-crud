@@ -1,3 +1,49 @@
+# BOOK COLLECTION API (CRUD) + IMPORT FROM CSV
+
+## Used Technologies:
+- Laravel 12
+- Docker
+- nginx:1.25.3
+- php 8.2
+- MySQL 8.0
+- Composer
+- Postman (for testing)
+
+## Laravel Features and Patterns:
+- Routes
+- Models
+- Controllers
+- Services
+- Requests
+- Resources
+- Migrations
+
+## installation:
+
+### clone git repository
+```bash
+git https://github.com/PryanikRainbow/user-task.git
+```
+
+### install environment
+```bash
+docker-compose up -d
+```
+### copy .env file
+```bash
+cp .env.example .env
+```
+
+### artisan commands are available in the php container
+```bash
+docker exec -it ut-php /bin/bash
+```
+
+### run migrations
+```bash
+php artisan migrate
+```
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
