@@ -22,7 +22,12 @@
 
 ### clone git repository
 ```bash
-git https://github.com/PryanikRainbow/user-task-crud.git
+git clone https://github.com/PryanikRainbow/user-task-crud.git
+```
+
+### go to the project directory
+```bash
+cd user-task-crud
 ```
 
 ### install environment
