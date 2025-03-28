@@ -1,4 +1,4 @@
-# BOOK COLLECTION API (CRUD) + IMPORT FROM CSV
+# User & Task CRUD (without authorization). RESTful API
 
 ## Used Technologies:
 - Laravel 12
