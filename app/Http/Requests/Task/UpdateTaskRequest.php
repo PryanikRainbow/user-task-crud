@@ -6,7 +6,7 @@ use App\Http\Requests\BaseRequest;
 use App\Models\Task;
 use Illuminate\Validation\Rule;
 
-class CreateTaskRequest extends BaseRequest
+class UpdateTaskRequest extends BaseRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -17,15 +17,20 @@ class CreateTaskRequest extends BaseRequest
     {
         return [
             'title'           => [
-                'required',
+                'sometimes',
                 'string',
                 'min:1',
                 'max:255',
             ],
             'description'     => [
-                'required',
+                'sometimes',
                 'string',
                 'min:1',
+            ],
+            'user_id'         => [
+                'sometimes',
+                'int',
+                'exists:users,id',
             ],
             'status'          => [
                 'sometimes',
@@ -33,7 +38,7 @@ class CreateTaskRequest extends BaseRequest
                 Rule::in(Task::STATUSES)
             ],
             'start_date_time' => [
-                'required',
+                'sometimes',
                 'date_format:Y-m-d H:i:s',
             ],
         ];

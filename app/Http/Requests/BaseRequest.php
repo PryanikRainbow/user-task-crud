@@ -24,7 +24,7 @@ class BaseRequest extends FormRequest
             response()->json([
                 'message' => 'Validation error',
                 'errors'  => $validator->errors(),
-            ], Response::HTTP_BAD_REQUEST)
+            ], Response::HTTP_UNPROCESSABLE_ENTITY)
         );
     }
 }

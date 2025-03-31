@@ -30,7 +30,7 @@ class CreateUserRequest extends BaseRequest
                 'required',
                 'string',
                 'min:6',
-                Password::min(8)
+                Password::min(6)
                     ->letters()
                     ->numbers(),
                 function (string $attribute, mixed $value, Closure $fail) {

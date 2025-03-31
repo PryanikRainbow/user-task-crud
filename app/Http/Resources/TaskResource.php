@@ -19,7 +19,6 @@ class TaskResource extends JsonResource
             'title'           => $this->title,
             'description'     => $this->description,
             'status'          => $this->status,
-            'email'           => $this->email,
             'start_date_time' => $this->start_date_time->format('d-m-Y H:i'),
         ];
     }

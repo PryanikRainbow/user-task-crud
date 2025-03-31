@@ -11,18 +11,12 @@ use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
     public function __construct(private readonly UserService $service) {}
 
-    /**
-     * @param Request $request
-     *
-     * @return JsonResponse
-     */
     public function index(GetListUserRequest $request): JsonResponse
     {
         /** @var LengthAwarePaginator $list  */
@@ -39,10 +33,7 @@ class UserController extends Controller
         $user = User::find($userId);
 
         if (!$user) {
-            return response()->json(
-                ['message' => 'User not found'],
-                Response::HTTP_NOT_FOUND
-            );
+            return $this->userNotFoundResponse();
         }
 
         return response()->json(
@@ -64,10 +55,7 @@ class UserController extends Controller
         $user = User::find($userId);
 
         if (!$user) {
-            return response()->json(
-                ['message' => 'User not found'],
-                Response::HTTP_NOT_FOUND
-            );
+            return $this->userNotFoundResponse();
         }
 
         return response()->json(
@@ -76,24 +64,24 @@ class UserController extends Controller
         );
     }
 
-    /**
-     * @param Book $book
-     *
-     * @return JsonResonse
-     */
     public function remove(int $userId): JsonResponse
     {
         $user = User::find($userId);
 
         if (!$user) {
-            return response()->json(
-                ['message' => 'User not found'],
-                Response::HTTP_NOT_FOUND
-            );
+            return $this->userNotFoundResponse();
         }
 
         $this->service->delete($user);
 
         return response()->json([], Response::HTTP_OK,);
+    }
+
+    protected static function userNotFoundResponse(): JsonResponse
+    {
+        return response()->json(
+            ['message' => "User not found"],
+            Response::HTTP_NOT_FOUND
+        );
     }
 }

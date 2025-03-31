@@ -23,20 +23,20 @@ Route::prefix('users')->group(function () {
     Route::put('{id}', [UserController::class, 'update']);
     Route::delete('{id}', [UserController::class, 'remove']);
     
-    Route::prefix('/{user}/tasks')->group(function () {
-        Route::get('/', [TaskController::class, 'index']);
-        Route::post('/', [TaskController::class, 'create']);
-        Route::get('{taskId}', [TaskController::class, 'show']);
-        Route::put('{taskId}', [TaskController::class, 'update']);
-        Route::delete('{taskId}', [TaskController::class, 'delete']);
-        // Route::delete('/', [TaskController::class, 'deleteAll']);
+    Route::prefix('/{userId}/tasks')->group(function () {
+        Route::get('/', [TaskController::class, 'index'])->middleware(['user.exists',]);
+        Route::post('/', [TaskController::class, 'create'])->middleware(['user.exists',]);
         Route::get('/stats', [TaskController::class, 'userTaskStats']);
+        Route::get('{taskId}', [TaskController::class, 'show'])->middleware(['user.exists',]);
+        Route::put('{taskId}', [TaskController::class, 'update'])->middleware(['user.exists',]);
+        Route::delete('{taskId}', [TaskController::class, 'remove'])->middleware(['user.exists',]);
+        Route::delete('/', [TaskController::class, 'removeUnprocessed'])->middleware(['user.exists',]);
     });
 });
 
 
 Route::prefix('tasks')->group(function () {
-    Route::get('stats', [TaskController::class, 'generalTaskStats']);
+    Route::get('stats', [TaskController::class, 'taskStats']);
 });
 
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
