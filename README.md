@@ -420,9 +420,7 @@ Delete all unprocessed tasks (tasks with status "New") for a specific user.
 ### Response
 **Success Response (200 OK):**
 ```json
-{
     []
-}
 ```
 ### Notes
 - Only tasks with the status `New` can be deleted.
@@ -437,7 +435,7 @@ Delete a task by its ID (Only tasks with the status `New` can be deleted).
 ### Response
 **Success Response (200 OK):**
 ```json
-[]
+    []
 ```
 
 ## Retrieve Task Statistics by Status for a Specific User
