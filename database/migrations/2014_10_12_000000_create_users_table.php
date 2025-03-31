@@ -19,8 +19,6 @@ return new class extends Migration
             $table->string('last_name', 255)->index();
             $table->string('email')->unique();
             $table->timestamp('registered_at')->useCurrent();
-            // $table->timestamp('updated_at')->useCurrentOnUpdate();
-            // updated use or no?
         });
     }
 

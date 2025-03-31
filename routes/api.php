@@ -26,7 +26,7 @@ Route::prefix('users')->group(function () {
     Route::prefix('/{userId}/tasks')->group(function () {
         Route::get('/', [TaskController::class, 'index'])->middleware(['user.exists',]);
         Route::post('/', [TaskController::class, 'create'])->middleware(['user.exists',]);
-        Route::get('/stats', [TaskController::class, 'userTaskStats']);
+        Route::get('/stats', [TaskController::class, 'userTaskStats'])->middleware(['user.exists',]);
         Route::get('{taskId}', [TaskController::class, 'show'])->middleware(['user.exists',]);
         Route::put('{taskId}', [TaskController::class, 'update'])->middleware(['user.exists',]);
         Route::delete('{taskId}', [TaskController::class, 'remove'])->middleware(['user.exists',]);
