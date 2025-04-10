@@ -27,11 +27,6 @@ class UpdateTaskRequest extends BaseRequest
                 'string',
                 'min:1',
             ],
-            'user_id'         => [
-                'sometimes',
-                'int',
-                'exists:users,id',
-            ],
             'status'          => [
                 'sometimes',
                 'string',
